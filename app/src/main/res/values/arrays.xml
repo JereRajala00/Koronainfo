@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="maakunnat_array">
+        <item>Valitse maakunta</item>
+        <item>Ahvenanmaa</item>
+        <item>Etelä-Karjala</item>
+        <item>Etelä-Pohjanmaa</item>
+        <item>Etelä-Savo</item>
+        <item>Kanta-Häme</item>
+        <item>Keski-Pohjanmaa</item>
+        <item>Keski-Suomi</item>
+        <item>Kymenlaakso</item>
+        <item>Lappi</item>
+        <item>Pirkanmaa</item>
+        <item>Pohjanmaa</item>
+        <item>Pohjois-Karjala</item>
+        <item>Pohjois-Pohjanmaa</item>
+        <item>Pohjois-Savo</item>
+        <item>Päijät-Häme</item>
+        <item>Satakunta</item>
+        <item>Uusimaa</item>
+        <item>Varsinais-Suomi</item>
+    </string-array>
+</resources>
