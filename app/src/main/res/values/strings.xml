@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">Koronainfo</string>
+    <string name="kysymys1">Onko sinulla yskää?</string>
+    <string name="yes">Kyllä</string>
+    <string name="no">Ei</string>
+    <string name="kysymys2">Onko sinulla nuhaa?</string>
+    <string name="kysymys3">Onko sinulla hengenahdistusta?</string>
+    <string name="kysymys4">Mikä on kehosi lämpötila?</string>
+    <string name="kuume">0</string>
+    <string name="kysymys5">Onko sinulla pahoinvointia?</string>
+    <string name="kysymys6">Onko sinulla haju- tai makuaistihäiriöitä?</string>
+    <string name="kysymys7">Onko sinulla väsymystä?</string>
+    <string name="kysymys8">Oletko ollut viimeisen 14 vuorokauden aikana lähikontaktissa henkilöön, jolla tiedät olevan koronatartunta?</string>
+    <string name="kysymys9">Oletko oleskellut viimeisen 14 vuorokauden aikana alueella, jossa koronavirusta esiintyy runsaasti?</string>
+    <string name="little">Vähän</string>
+    <string name="much">Paljon</string>
+    <string name="kysymys10">Kauanko oireet ovat jatkuneet (jätä tyhjäksi jos niitä ei ole ollut)?</string>
+    <string name="short1">1 &#8211; 14 päivää</string>   // #8211 stands for "-"
+    <string name="middle1">14 &#8211; 30 päivää</string>
+    <string name="long1">Yli 30 päivää</string>
+    <string name="en">En</string>
+    <string name="olen">Kyllä olen</string>
+    <string name="tulos">Laske tartunnan todennäköisyys</string>
+
 </resources>
