@@ -1,18 +1,18 @@
 package com.example.koronainfo;
 
 
-import android.net.Uri;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+        import android.net.Uri;
+        import android.os.Bundle;
+        import android.view.View;
+        import android.widget.Button;
 
 
-import androidx.appcompat.app.AppCompatActivity;
+        import androidx.appcompat.app.AppCompatActivity;
 
-import com.google.android.youtube.player.YouTubeBaseActivity;
-import com.google.android.youtube.player.YouTubeInitializationResult;
-import com.google.android.youtube.player.YouTubePlayer;
-import com.google.android.youtube.player.YouTubePlayerView;
+        import com.google.android.youtube.player.YouTubeBaseActivity;
+        import com.google.android.youtube.player.YouTubeInitializationResult;
+        import com.google.android.youtube.player.YouTubePlayer;
+        import com.google.android.youtube.player.YouTubePlayerView;
 
 
 public class Opas extends YouTubeBaseActivity {
@@ -31,7 +31,7 @@ public class Opas extends YouTubeBaseActivity {
         kuuntelija = new YouTubePlayer.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-            youTubePlayer.loadVideo("ZKt0CJe85gY");
+                youTubePlayer.loadVideo("ZKt0CJe85gY");
             }
 
             @Override

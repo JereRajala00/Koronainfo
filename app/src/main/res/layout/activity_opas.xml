@@ -132,8 +132,7 @@
         <TextView
             android:id="@+id/opas7"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Muista vähintään metrin etäisyys" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 
