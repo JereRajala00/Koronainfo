@@ -34,7 +34,7 @@ public class Tartuntatiedot extends AppCompatActivity {
         totalInf = res.getString(R.string.total_inf);
         totalDth = res.getString(R.string.total_dth);
         totalInc = res.getString(R.string.total_incidence);
-        infView.setText(res.getString(R.string.total_info, totalInf, totalDth, totalInf));
+        infView.setText(res.getString(R.string.total_info, totalInf, totalDth, totalInc));
 
         //from https://developer.android.com/guide/topics/ui/controls/spinner
         spinner = (Spinner) findViewById(R.id.maakunnat_spinner);
