@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void exit(View view) {
-        finish();
+        onDestroy();
         System.exit(0);
     }
 }
