@@ -3,6 +3,7 @@ package com.example.koronainfo;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -10,15 +11,30 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class Tartuntatiedot extends AppCompatActivity {
     private Spinner spinner;
-    @Override
+    private Resources res;
+    private String selectedInf;
+    private String selectedInc;
+    private String totalInf;
+    private String totalDth;
+    private String totalInc;
+    TextView maakuntaTextView;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tartuntatiedot);
+        TextView infView = (TextView) findViewById(R.id.InfectedCountView);
+
+        res = getResources();
+        totalInf = res.getString(R.string.total_inf);
+        totalDth = res.getString(R.string.total_dth);
+        totalInc = res.getString(R.string.total_incidence);
+        infView.setText(res.getString(R.string.total_info, totalInf, totalDth, totalInf));
 
         //from https://developer.android.com/guide/topics/ui/controls/spinner
         spinner = (Spinner) findViewById(R.id.maakunnat_spinner);
@@ -29,39 +45,48 @@ public class Tartuntatiedot extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
-        //setMaakunnat();
+        setMaakunnat();
 
-        /*lv = (ListView)findViewById(R.id.tartuntatiedotListView);
+        String selectedMaakunta = spinner.getSelectedItem().toString();
+        maakuntaTextView = (TextView) findViewById(R.id.InfectedMaakuntaView);
 
-        ArrayList<String> arrayList = new ArrayList<>();
-        arrayList.add("testi");
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                TextView maakuntaTextView = (TextView) findViewById(R.id.InfectedMaakuntaView);
+                selectedInf = Integer.toString(MaakuntaModel.getInstance().getMaakunta(position).getMaakuntaInf());
+                selectedInc = Double.toString(MaakuntaModel.getInstance().getMaakunta(position).getMaakuntaInc());
+                maakuntaTextView.setText(res.getString(R.string.maakunta_info, selectedInf, selectedInc));
+            }
 
-        ArrayAdapter arrayAdapter = new ArrayAdapter(
-                this,
-                R.layout.listview_layout,
-                arrayList
-        );
 
-        lv.setAdapter(arrayAdapter);*/
-
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                maakuntaTextView.setText("Valitse maakunta");
+            }
+        });
 
     }
-    /*public class SpinnerActivity extends Activity implements AdapterView.OnItemSelectedListener {
 
-        public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-            // An item was selected. You can retrieve the selected item using
-            String selectedMaakunta = spinner.getSelectedItem().toString();
-            for (int i; i < MaakuntaModel.; i++)
-                if (selectedMaakunta.equals(MaakuntaModel.getInstance().getMaakunta(i).getMaakuntaName() {
-                    return MaakuntaModel.getInstance().get
-                }
-        }
-
-        public void onNothingSelected(AdapterView<?> parent) {
-            // Another interface callback
-        }
-    }
     private void setMaakunnat() {
-        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Ahvenanmaa",11, ))
-    }*/
+        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Ahvenanmaa",11, 36.8));
+        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Etelä-Karjala",14, 11.0));
+        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Etelä-Pohjanmaa",36,18.6));
+        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Etelä-Savo", 46,46.5));
+        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Kainuu",55,76.1));
+        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Kanta-Häme", 75,43.9));
+        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Keski-Pohjanmaa", 13, 16.8));
+        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Keski-Suomi", 123, 48.7));
+        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Kymenlaakso", 35,21.3));
+        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Lappi", 68, 58.2));
+        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Pirkanmaa", 213, 41.4));
+        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Pohjanmaa", 47, 27.7));
+        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Pohjois-Karjala", 24, 14.6));
+        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Pohjois-Pohjanmaa", 122, 29.7));
+        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Pohjois-Savo", 120, 49.1));
+        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Päijät-Häme", 72, 34.3));
+        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Satakunta", 51, 23.5));
+        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Uusimaa", 3204, 190.0));
+        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Varsinais-Suomi", 250, 51.8));
+    }
 }

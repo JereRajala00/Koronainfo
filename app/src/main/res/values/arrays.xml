@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="maakunnat_array">
-        <item>Valitse maakunta</item>
         <item>Ahvenanmaa</item>
         <item>Etelä-Karjala</item>
         <item>Etelä-Pohjanmaa</item>

@@ -39,12 +39,12 @@
 
         <TextView
             android:id="@+id/InfectedCountView"
-            android:layout_width="217dp"
+            android:layout_width="318dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="40dp"
             android:background="@drawable/border"
-            android:text="@string/inftected_count"
+            android:text="@string/total_info"
             android:textAlignment="center"
             android:textColor="@android:color/black" />
 
@@ -57,12 +57,12 @@
 
         <TextView
             android:id="@+id/InfectedMaakuntaView"
-            android:layout_width="217dp"
+            android:layout_width="321dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="40dp"
             android:background="@drawable/border"
-            android:text="@string/inftected_count"
+            android:text="@string/maakunta_info"
             android:textAlignment="center"
             android:textColor="@android:color/black" />
 
