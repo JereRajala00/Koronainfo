@@ -48,6 +48,18 @@
             android:textAlignment="center"
             android:textColor="@android:color/black" />
 
+        <TextView
+            android:id="@+id/HeaderMaakunnittain"
+            android:layout_width="178dp"
+            android:layout_height="37dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+
+            android:text="Maakunnittain"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@android:color/black"
+            android:textAlignment="center"/>
+
         <Spinner
             android:id="@+id/maakunnat_spinner"
             android:layout_width="353dp"
@@ -67,6 +79,34 @@
             android:textColor="@android:color/black" />
 
 
+        <TextView
+            android:id="@+id/InfoView"
+            android:layout_width="321dp"
+            android:layout_height="89dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/border"
+            android:text="Tartuntamäärät varmistettuja, testattuja tartuntoja. Todellinen määrä voi olla jopa 20-30 -kertainen. \n\nLähde: THL"
+            android:textAlignment="center"
+            android:textColor="@android:color/black" />
+
+        <ImageView
+            android:id="@+id/ThlLogoView"
+            android:layout_width="124dp"
+            android:layout_height="97dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            app:srcCompat="@drawable/thllogo" />
+
+        <TextView
+            android:id="@+id/ClickLogoView"
+            android:layout_width="321dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="0dp"
+            android:text="Lisää tietoa painamalla logoa"
+            android:textAlignment="center"
+            android:textColor="@android:color/black" />
     </LinearLayout>
 
 </ScrollView>

@@ -2,7 +2,7 @@
     <string name="app_name">Koronainfo</string>
     <string name="tartunatiedot_header">Tartuntatiedot 26.4.2020 klo 13.10</string>
     <string name="total_info">Tartunnat Suomessa: %1$s\n\nKoronaan liittyvät kuolemat: %2$s\n\nIlmaantuvuus (tapausta 100 000) kohden: %3$s</string>
-    <string name="maakunta_info">Tartunnat Suomessa: %1$s\n\nIlmaantuvuus (tapausta 100 000) kohden: %2$s</string>
+    <string name="maakunta_info">Tartunnat %1$s: %2$s\n\nIlmaantuvuus (tapausta 100 000) kohden: %3$s</string>
     <string name="total_inf">4 576</string>
     <string name="total_dth">190</string>
     <string name="total_incidence">83</string>

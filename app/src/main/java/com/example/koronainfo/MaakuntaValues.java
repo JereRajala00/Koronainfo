@@ -1,5 +1,7 @@
 package com.example.koronainfo;
 
+import androidx.annotation.NonNull;
+
 public class MaakuntaValues{
     private String maakunta;
     private int infected;
@@ -22,5 +24,10 @@ public class MaakuntaValues{
 
     public Double getMaakuntaInc() {
         return this.incidence;
+    }
+
+    @Override
+    public String toString() {
+        return this.maakunta;
     }
 }

@@ -3,17 +3,17 @@ package com.example.koronainfo;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Resources;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-import android.widget.ListView;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 
 public class Tartuntatiedot extends AppCompatActivity {
     private Spinner spinner;
@@ -23,7 +23,7 @@ public class Tartuntatiedot extends AppCompatActivity {
     private String totalInf;
     private String totalDth;
     private String totalInc;
-    TextView maakuntaTextView;
+    private TextView maakuntaTextView;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,44 +31,56 @@ public class Tartuntatiedot extends AppCompatActivity {
         TextView infView = (TextView) findViewById(R.id.InfectedCountView);
 
         res = getResources();
-        totalInf = res.getString(R.string.total_inf);
-        totalDth = res.getString(R.string.total_dth);
-        totalInc = res.getString(R.string.total_incidence);
+        //totalInf = res.getString(R.string.total_inf);
+        //totalDth = res.getString(R.string.total_dth);
+        //totalInc = res.getString(R.string.total_incidence);
+        setMaakunnat();
         infView.setText(res.getString(R.string.total_info, totalInf, totalDth, totalInc));
 
         //from https://developer.android.com/guide/topics/ui/controls/spinner
         spinner = (Spinner) findViewById(R.id.maakunnat_spinner);
+
         // Create an ArrayAdapter using the string array and a default spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-                this, R.array.maakunnat_array, android.R.layout.simple_spinner_item);
+        ArrayAdapter<MaakuntaValues> adapter = new ArrayAdapter<MaakuntaValues>(
+                this, android.R.layout.simple_spinner_item, MaakuntaModel.getInstance().getMaakunta());
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
-        setMaakunnat();
 
-        String selectedMaakunta = spinner.getSelectedItem().toString();
+
         maakuntaTextView = (TextView) findViewById(R.id.InfectedMaakuntaView);
-
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 TextView maakuntaTextView = (TextView) findViewById(R.id.InfectedMaakuntaView);
                 selectedInf = Integer.toString(MaakuntaModel.getInstance().getMaakunta(position).getMaakuntaInf());
                 selectedInc = Double.toString(MaakuntaModel.getInstance().getMaakunta(position).getMaakuntaInc());
-                maakuntaTextView.setText(res.getString(R.string.maakunta_info, selectedInf, selectedInc));
+                maakuntaTextView.setText(res.getString(R.string.maakunta_info, MaakuntaModel.getInstance().getMaakunta(position).getMaakuntaName(), selectedInf, selectedInc));
             }
-
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 maakuntaTextView.setText("Valitse maakunta");
             }
         });
-
+        ImageView img = (ImageView)findViewById(R.id.ThlLogoView);
+        //Thank you Cristian from Stackoverflow https://stackoverflow.com/a/3536535
+        img.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                Intent intent = new Intent();
+                intent.setAction(Intent.ACTION_VIEW);
+                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+                intent.setData(Uri.parse("https://thl.fi/fi/web/infektiotaudit-ja-rokotukset/ajankohtaista/ajankohtaista-koronaviruksesta-covid-19/tilannekatsaus-koronaviruksesta"));
+                startActivity(intent);
+            }
+        });
     }
 
     private void setMaakunnat() {
+        totalInf = "4 576";
+        totalDth = "190";
+        totalInc = "83";
         MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Ahvenanmaa",11, 36.8));
         MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Etelä-Karjala",14, 11.0));
         MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Etelä-Pohjanmaa",36,18.6));

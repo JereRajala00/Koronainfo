@@ -22,9 +22,4 @@ public class MaakuntaModel {
     public MaakuntaValues getMaakunta(int i) {
         return maakunta.get(i);
     }
-    /*public MaakuntaModel(String newMaakunta, int newInfected, int newDeaths) {
-        this.maakunta = newMaakunta;
-        this.infected = newInfected;
-        this.deaths = newDeaths;
-    }*/
 }
