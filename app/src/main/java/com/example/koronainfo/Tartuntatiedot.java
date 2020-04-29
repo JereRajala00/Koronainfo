@@ -14,32 +14,41 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+/**
+ * Luokka sisältää tartuntatiedot-aktiviteetin käyttöön toimintaan liittyviä toimintoja.
+ * @author Tiitus Telke
+ * @version 29.4.2020
+ */
 
 public class Tartuntatiedot extends AppCompatActivity {
     private Spinner spinner;
     private Resources res;
     private String selectedInf;
     private String selectedInc;
-    private String totalInf;
-    private String totalDth;
-    private String totalInc;
+    private Integer totalInf;
+    private Integer totalDth;
+    private Double totalInc;
     private TextView maakuntaTextView;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tartuntatiedot);
         TextView infView = (TextView) findViewById(R.id.InfectedCountView);
-
+        /**
+        * Haetaan resurssit res-muuttujaan.
+        * Haetaan maakunnat ja niiden sisältö sekä kaikki tartunnat setMaakunnat() -metodista.
+         * Lisätään total_info -resurssiin arvot totalInf(kaikki tartunnat), totalDth(kuolemat) ja totalInc(esiintyvyys) ja asetetaan resurssi infView TextViewiin.
+         * @see Tartuntatiedot#setMaakunnat()
+        */
         res = getResources();
-        //totalInf = res.getString(R.string.total_inf);
-        //totalDth = res.getString(R.string.total_dth);
-        //totalInc = res.getString(R.string.total_incidence);
         setMaakunnat();
         infView.setText(res.getString(R.string.total_info, totalInf, totalDth, totalInc));
 
-        //from https://developer.android.com/guide/topics/ui/controls/spinner
+        /**
+         * Alustetaan spinner(alasvetovalikko) ja ArrayAdapter MaakuntaModel-singletonin arvojen perusteella.
+         * @see MaakuntaModel
+         */
         spinner = (Spinner) findViewById(R.id.maakunnat_spinner);
-
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter<MaakuntaValues> adapter = new ArrayAdapter<MaakuntaValues>(
                 this, android.R.layout.simple_spinner_item, MaakuntaModel.getInstance().getMaakunta());
@@ -48,12 +57,13 @@ public class Tartuntatiedot extends AppCompatActivity {
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
 
-
         maakuntaTextView = (TextView) findViewById(R.id.InfectedMaakuntaView);
+        /**
+         * Asetetaan kuuntelija spinnerille. TextView muuttuu valitun maakunnan mukaan käytten position-muuttujaa käyttäen maakunta_info-resurssia. Arvot haetaan position-muuttujan mukaan MaakuntaModelin instanssista.
+         */
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                TextView maakuntaTextView = (TextView) findViewById(R.id.InfectedMaakuntaView);
                 selectedInf = Integer.toString(MaakuntaModel.getInstance().getMaakunta(position).getMaakuntaInf());
                 selectedInc = Double.toString(MaakuntaModel.getInstance().getMaakunta(position).getMaakuntaInc());
                 maakuntaTextView.setText(res.getString(R.string.maakunta_info, MaakuntaModel.getInstance().getMaakunta(position).getMaakuntaName(), selectedInf, selectedInc));
@@ -64,6 +74,9 @@ public class Tartuntatiedot extends AppCompatActivity {
                 maakuntaTextView.setText("Valitse maakunta");
             }
         });
+        /**
+         * Asetetaan kuuntelija thl-logolle. Klikatessa aloitetaan luodaan uusi Intent jonka avulla avataan linkki. Tässä on käytetty esimerkkiä. Thank you Cristian from Stackoverflow https://stackoverflow.com/a/3536535.
+         */
         ImageView img = (ImageView)findViewById(R.id.ThlLogoView);
         //Thank you Cristian from Stackoverflow https://stackoverflow.com/a/3536535
         img.setOnClickListener(new View.OnClickListener(){
@@ -77,10 +90,16 @@ public class Tartuntatiedot extends AppCompatActivity {
         });
     }
 
+    /**
+     * @setMaakunnat void Luo Maakuntamodel-singletonin avulla uudet ArrayListit luokasta MaakuntaValues.
+     * @see MaakuntaModel
+     * @see MaakuntaValues
+     */
+
     private void setMaakunnat() {
-        totalInf = "4 576";
-        totalDth = "190";
-        totalInc = "83";
+        totalInf = 4576;
+        totalDth = 190;
+        totalInc = 83.0;
         MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Ahvenanmaa",11, 36.8));
         MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Etelä-Karjala",14, 11.0));
         MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Etelä-Pohjanmaa",36,18.6));
