@@ -16,7 +16,7 @@ import android.widget.TextView;
 /**
  * Luokka sisältää tartuntatiedot-aktiviteetin käyttöön liittyviä toimintoja.
  * @author Tiitus Telke
- * @version 29.4.2020
+ * @version 30.4.2020
  */
 
 public class Tartuntatiedot extends AppCompatActivity {

@@ -3,9 +3,8 @@
     <string name="tartunatiedot_header">Tartuntatiedot 26.4.2020 klo 13.10</string>
     <string name="total_info">Tartunnat Suomessa: %1$d\n\nKoronaan liittyvät kuolemat: %2$d\n\nIlmaantuvuus (tapausta 100 000) kohden: %3$.1f</string>
     <string name="maakunta_info">Tartunnat %1$s: %2$d\n\nIlmaantuvuus (tapausta 100 000) kohden: %3$.1f</string>
-    <string name="total_inf">4 576</string>
-    <string name="total_dth">190</string>
-    <string name="total_incidence">83</string>
+    <string name="authors">Tekijät: Tieto- ja Viestintätekniikan Insinööriopiskelijat Jarno Kaikkonen, Jere Rajala ja Tiitus Telke</string>
+    <string name="version">Version 30.4.2020</string>
     <string name="kysymys1">Onko sinulla yskää?</string>
     <string name="yes">Kyllä</string>
     <string name="no">Ei</string>
