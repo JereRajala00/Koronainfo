@@ -2,7 +2,7 @@
     <string name="app_name">Koronainfo</string>
     <string name="tartunatiedot_header">Tartuntatiedot 26.4.2020 klo 13.10</string>
     <string name="total_info">Tartunnat Suomessa: %1$d\n\nKoronaan liittyvät kuolemat: %2$d\n\nIlmaantuvuus (tapausta 100 000) kohden: %3$.1f</string>
-    <string name="maakunta_info">Tartunnat %1$s: %2$s\n\nIlmaantuvuus (tapausta 100 000) kohden: %3$s</string>
+    <string name="maakunta_info">Tartunnat %1$s: %2$d\n\nIlmaantuvuus (tapausta 100 000) kohden: %3$.1f</string>
     <string name="total_inf">4 576</string>
     <string name="total_dth">190</string>
     <string name="total_incidence">83</string>
@@ -21,7 +21,8 @@
     <string name="little">Vähän</string>
     <string name="much">Paljon</string>
     <string name="kysymys10">Kauanko oireet ovat jatkuneet (jätä tyhjäksi jos niitä ei ole ollut)?</string>
-    <string name="short1">1 &#8211; 14 päivää</string>   // #8211 stands for "-"
+    <string name="short1">1 &#8211; 14 päivää</string>
+    // #8211 stands for "-"
     <string name="middle1">14 &#8211; 30 päivää</string>
     <string name="long1">Yli 30 päivää</string>
     <string name="en">En</string>

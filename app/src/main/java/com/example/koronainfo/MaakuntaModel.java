@@ -38,7 +38,7 @@ public class MaakuntaModel {
 
     /**
      * Käytetään kun halutaan käsitellä tiettyä ArrayListin jäsentä
-     * @param i Määrittää ArrayListin indeksi
+     * @param i Määrittää ArrayListin indeksin
      * @return Palauttaa ArrayListin jossa parametrin indeksi
      */
     public MaakuntaValues getMaakunta(int i) {

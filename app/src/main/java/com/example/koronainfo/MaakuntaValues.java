@@ -24,6 +24,7 @@ public class MaakuntaValues{
     }
 
     /**
+     * Käytetään kun halutaan palauttaa maakunnan nimi
      * @return Palauttaa maakunnan nimen
      */
     public String getMaakuntaName() {
@@ -38,7 +39,7 @@ public class MaakuntaValues{
     }
 
     /**
-     *
+     * Käytetään kun halutaan vaihtaa tartuntamäärä
      * @param newInfCount Vaihtaa tartuntamäärän (jos esim. haetaan verkosta uusi määrä)
      */
     public void changeInfCount(Integer newInfCount) {
@@ -46,7 +47,7 @@ public class MaakuntaValues{
     }
 
     /**
-     *
+     * Käytetään kun halutaan palauttaa esiintyneisyys
      * @return Palauttaa esiintyneisyyden
      */
     public Double getMaakuntaInc() {
