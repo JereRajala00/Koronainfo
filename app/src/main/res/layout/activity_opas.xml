@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".Opas">
 
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="281dp"
@@ -23,12 +24,11 @@
         class="com.google.android.youtube.player.YouTubePlayerView"
         android:layout_width="210dp"
         android:layout_height="117dp"
+        android:layout_marginBottom="132dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.662"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.223" />
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/nappula"
@@ -37,103 +37,59 @@
         android:text="Toista"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.609"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/video"
-        app:layout_constraintVertical_bias="0.077" />
+        app:layout_constraintVertical_bias="0.225" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
         android:text="Käsienpesuohje"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/video"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.593"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.63" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
         android:text="Ohjeita viruksen levittämisen välttämiseksi"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.472"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nappula"
-        app:layout_constraintVertical_bias="0.048" />
-
-    <ScrollView
-        android:layout_width="59dp"
-        android:layout_height="392dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
-
-    <LinearLayout
-        android:layout_width="341dp"
-        android:layout_height="251dp"
-        android:layout_marginTop="22dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3">
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-        <TextView
-            android:id="@+id/ohje1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Pese käsiä vedellä ja saippualla ainakin 20 sekunnin ajan. Kädet kannattaa pestä erityisesti kun tulet ulkoa sisään, aina wc-käynnin jälkeen tai kun olet niistänyt, yskinyt tai aivastanut" />
+    <Button
+        android:id="@+id/next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:onClick="plus"
+        android:text="Seuraava"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/opas"
+        app:layout_constraintVertical_bias="0.107" />
 
-        <TextView
-            android:id="@+id/opas2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Vaihda kotona käsipyyhkeitä usein ja käytä kodin ulkopuolella kertakäyttöpyyhkeitä. " />
-
-        <TextView
-            android:id="@+id/opas3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Älä koskettele silmiä, nenää tai suuta, ellet ole juuri pessyt käsiäsi. " />
-
-        <TextView
-            android:id="@+id/opas4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Vältä kättelyä. " />
-
-        <TextView
-            android:id="@+id/opas5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Suojaa suusi kun yskit tai aivastat" />
-
-        <TextView
-            android:id="@+id/opas6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Tee etätöitä mahdollisuuksien mukaan. " />
-
-        <TextView
-            android:id="@+id/opas7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+    <TextView
+        android:id="@+id/opas"
+        android:layout_width="212dp"
+        android:layout_height="89dp"
+        android:layout_marginTop="36dp"
+        android:onClick="plus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
