@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
  * Luokka kuvaa Tartuntatiedot-luokassa tarvittavia eri maakuntien virustartuntaan liittyviä arvoja
  * @author Tiitus Telke
  * @version 29.4.2020
+ * @see MaakuntaModel
  */
 public class MaakuntaValues{
     private String maakunta;

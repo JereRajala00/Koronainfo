@@ -14,39 +14,46 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 /**
- * Luokka sisältää tartuntatiedot-aktiviteetin käyttöön liittyviä toimintoja.
+ * This class is for tartuntatiedot (infection data) activity.
+ *
+ * Class sets values for infection data and sets it using MaakuntaModel singleton which can be used to create a new ArrayList of MaakuntaValues.
+ * Initializes a spinner using values from setMaakunnat() method. Sets listener for the spinner.
+ * The correct data for the provinces are set in the OnItemSelectedListener() -method using getInstance().getMaakunta(position) -method.
  * @author Tiitus Telke
  * @version 30.4.2020
+ * @see MaakuntaModel
+ * @see MaakuntaValues
  */
 
 public class Tartuntatiedot extends AppCompatActivity {
     private Spinner spinner;
     private Resources res;
-    private Integer selectedInf;
-    private Double selectedInc;
-    private Integer totalInf;
-    private Integer totalDth;
-    private Double totalInc;
-    private TextView maakuntaTextView;
+    private Integer selectedInf;            //amount of infections in selected province (maakunta)
+    private Double selectedInc;             //incidence in selected province
+    private Integer totalInf;               //amount of infections in whole country
+    private Integer totalDth;               //deaths in whole country
+    private Double totalInc;                //incidence in whole country
+    private TextView infView;                //this TextView shows the infection and death data in whole country
+    private TextView maakuntaTextView;      //this TextView shows the
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tartuntatiedot);
-        TextView infView = (TextView) findViewById(R.id.InfectedCountView);
+        infView = (TextView) findViewById(R.id.InfectedCountView);
 
-        /** Haetaan resurssit res-muuttujaan.
-         * Haetaan maakunnat ja niiden sisältö sekä kaikki tartunnat setMaakunnat() -metodista.
-         * Lisätään total_info -resurssiin arvot totalInf(kaikki tartunnat), totalDth(kuolemat) ja totalInc(esiintyvyys) ja asetetaan resurssi infView TextViewiin.
+        /* Gets resources to res variable
+         * Sets all the data for the provinces with setMaakunnat() -method
+         * Adds to total_info resource variables totalInf(all infections), totalDth(deaths) ja totalInc(incidence) ja sets the resource for the infView TextView.
          */
         res = getResources();
         setMaakunnat();
         infView.setText(res.getString(R.string.total_info, totalInf, totalDth, totalInc));
 
-        /**
-         * Alustetaan spinner(alasvetovalikko) ja ArrayAdapter maakunnat_array -resurssin avulla. Käytetty esimerkkiä https://developer.android.com/guide/topics/ui/controls/spinner -sivulta.
+        /*
+         * initializes the spinner and ArrayAdapter using maakunnat_array -resource. I used the example from https://developer.android.com/guide/topics/ui/controls/spinner
          */
         spinner = (Spinner) findViewById(R.id.maakunnat_spinner);
-        // Luodaan spinner
+        // Creates the spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.maakunnat_array, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
@@ -55,9 +62,9 @@ public class Tartuntatiedot extends AppCompatActivity {
         spinner.setAdapter(adapter);
 
         maakuntaTextView = (TextView) findViewById(R.id.InfectedMaakuntaView);
-        /**
-         * Asetetaan kuuntelija spinnerille. TextView muuttuu valitun maakunnan mukaan käytten position-muuttujaa käyttäen maakunta_info-resurssia. Arvot haetaan position-muuttujan mukaan MaakuntaModelin instanssista.
-         */
+
+        // Sets listener for the spinner. TextView is used according to selected province using maakunta_info resource. Values are retrieved using MaakuntaModel and the position variable.
+
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -71,9 +78,9 @@ public class Tartuntatiedot extends AppCompatActivity {
                 maakuntaTextView.setText("Valitse maakunta");
             }
         });
-        /**
-         * Asetetaan kuuntelija thl-logolle. Klikatessa aloitetaan luodaan uusi Intent jonka avulla avataan linkki. Tässä on käytetty esimerkkiä. Thank you Cristian from Stackoverflow https://stackoverflow.com/a/3536535.
-         */
+
+         //Sets listener for logo of the Finnish institute of health and welfare. I used an example code. Thank you Cristian from Stackoverflow https://stackoverflow.com/a/3536535.
+
         ImageView img = (ImageView)findViewById(R.id.ThlLogoView);
         img.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
@@ -87,32 +94,33 @@ public class Tartuntatiedot extends AppCompatActivity {
     }
 
     /**
-     * @setMaakunnat void Luo Maakuntamodel-singletonin avulla uudet ArrayListit luokasta MaakuntaValues.
+     * Creates a new ArrayList of MaakuntaValues using MaakuntaModel and sets total infected and deaths also.
+     * @setMaakunnat Creates a new ArrayList of MaakuntaValues using MaakuntaModel and sets total infected and deaths also.
      * @see MaakuntaModel
      * @see MaakuntaValues
      */
     private void setMaakunnat() {
-        totalInf = 4576;
-        totalDth = 190;
-        totalInc = 83.0;
+        totalInf = 5254;
+        totalDth = 230;
+        totalInc = 95.0;
         MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Ahvenanmaa",11, 36.8));
         MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Etelä-Karjala",14, 11.0));
         MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Etelä-Pohjanmaa",36,18.6));
         MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Etelä-Savo", 46,46.5));
-        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Kainuu",55,76.1));
-        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Kanta-Häme", 75,43.9));
+        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Kainuu",63,87.1));
+        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Kanta-Häme", 86,50.3));
         MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Keski-Pohjanmaa", 13, 16.8));
-        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Keski-Suomi", 123, 48.7));
-        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Kymenlaakso", 35,21.3));
-        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Lappi", 68, 58.2));
-        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Pirkanmaa", 213, 41.4));
-        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Pohjanmaa", 47, 27.7));
+        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Keski-Suomi", 127, 50.3));
+        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Kymenlaakso", 37,22.5));
+        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Lappi", 70, 59.9));
+        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Pirkanmaa", 231, 44.9));
+        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Pohjanmaa", 51, 30.1));
         MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Pohjois-Karjala", 24, 14.6));
-        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Pohjois-Pohjanmaa", 122, 29.7));
-        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Pohjois-Savo", 120, 49.1));
-        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Päijät-Häme", 72, 34.3));
+        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Pohjois-Pohjanmaa", 128, 31.2));
+        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Pohjois-Savo", 124, 50.8));
+        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Päijät-Häme", 75, 35.7));
         MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Satakunta", 51, 23.5));
-        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Uusimaa", 3204, 190.0));
-        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Varsinais-Suomi", 250, 51.8));
+        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Uusimaa", 3662, 217.2));
+        MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues("Varsinais-Suomi", 278, 57.7));
     }
 }

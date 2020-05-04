@@ -25,9 +25,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:gravity="center"
-        android:text="Tehty koulutyönä osana Metropolian Tieto -ja Viestintätekniikan Mobiilit terveyssovellukset-toteutusta"
+        android:text="@string/about_info2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AboutView" />
 
@@ -37,9 +37,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="84dp"
         android:gravity="center"
-        android:text="Sovelluksen tarkoituksena on auttaa ihmisiä saamaan tietoa helposti koronaviruksesta suoraan taskuunsa."
+        android:text="@string/about_info"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/AboutTitle" />
 
@@ -56,7 +56,7 @@
         app:layout_constraintTop_toBottomOf="@+id/AboutView2" />
 
     <TextView
-        android:id="@+id/T"
+        android:id="@+id/VersionView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="198dp"

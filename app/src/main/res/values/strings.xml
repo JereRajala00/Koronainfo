@@ -1,10 +1,15 @@
 <resources>
+    <!-- Author Jere Rajala, Tiitus Telke and Jarno Kaikkonen -->
     <string name="app_name">Koronainfo</string>
-    <string name="tartunatiedot_header">Tartuntatiedot 26.4.2020 klo 13.10</string>
+    <string name="tartunatiedot_header">Tartuntatiedot 3.5.2020 klo 13.30</string>
+    <string name="version">Version 4.5.2020</string>
     <string name="total_info">Tartunnat Suomessa: %1$d\n\nKoronaan liittyvät kuolemat: %2$d\n\nIlmaantuvuus (tapausta 100 000) kohden: %3$.1f</string>
     <string name="maakunta_info">Tartunnat %1$s: %2$d\n\nIlmaantuvuus (tapausta 100 000) kohden: %3$.1f</string>
+    <!-- for About page -->
+    <string name="about_info2">Tehty koulutyönä osana Metropolian Tieto -ja Viestintätekniikan Mobiilit terveyssovellukset-toteutusta.</string>
+    <string name="about_info">Sovelluksen tarkoituksena on auttaa ihmisiä saamaan tietoa helposti koronaviruksesta suoraan taskuunsa.</string>
     <string name="authors">Tekijät: Tieto- ja Viestintätekniikan Insinööriopiskelijat Jarno Kaikkonen, Jere Rajala ja Tiitus Telke</string>
-    <string name="version">Version 30.4.2020</string>
+    <!-- Questions for diagnosing -->
     <string name="kysymys1">Onko sinulla yskää?</string>
     <string name="yes">Kyllä</string>
     <string name="no">Ei</string>
@@ -21,8 +26,8 @@
     <string name="much">Paljon</string>
     <string name="kysymys10">Kauanko oireet ovat jatkuneet (jätä tyhjäksi jos niitä ei ole ollut)?</string>
     <string name="short1">1 &#8211; 14 päivää</string>
-    // #8211 stands for "-"
-    <string name="middle1">14 &#8211; 30 päivää</string>
+    <!-- #8211 stands for "-" -->
+    <string name="middle1">15 &#8211; 30 päivää</string>
     <string name="long1">Yli 30 päivää</string>
     <string name="en">En</string>
     <string name="olen">Kyllä olen</string>
