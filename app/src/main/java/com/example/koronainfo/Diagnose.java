@@ -1,4 +1,3 @@
-// author Jere Rajala
 package com.example.koronainfo;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,16 +16,19 @@ import java.util.ArrayList;
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
 /**
- * esirjies
- * @author
- * @version
+ * Purpose of this class is to calculate user's probability of being infected based on the questions asked from user.
+ * Information will be sent with intent extra to DiagnoseFinal class for displaying.
+ * @author Jere Rajala
+ * @version 4.5.2020
  */
+
+/** declare all the widgets and variables **/
 public class Diagnose extends AppCompatActivity {
 
-    public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";  // declare all the widgets and variables
+    public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
     public static final String EXTRA_MESSAGE2 = "com.example.myfirstapp.MESSAGE2";
     private double points = 0;
-    private double maximumpoints = 12;  // at the end, amount of gathered points is divided by maximum possible number of points
+    private double maximumpoints = 12;  /** at the end, amount of gathered points is divided by maximum possible number of points **/
     private TextView kuume;
     private SeekBar kuumemittari;
     public static final String PREFERENCE = "database";
@@ -51,7 +53,8 @@ public class Diagnose extends AppCompatActivity {
     private RadioButton no8;
     private RadioButton no9;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {  // intialize all the widgets and variables, give them values
+    /** intialize all the widgets and variables, give them values **/
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diagnose);
         yes1 = findViewById(R.id.yes1);
@@ -77,7 +80,8 @@ public class Diagnose extends AppCompatActivity {
         kuume = findViewById(R.id.kuume);
         kuumemittari = findViewById(R.id.kuumemittari);
         kuumemittari.setMax(43);
-        kuumemittari.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() { // setting up listener for seekbar
+        /**  setting up listener for seekbar **/
+        kuumemittari.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 kuume.setText("" + progress);
@@ -94,7 +98,8 @@ public class Diagnose extends AppCompatActivity {
             }
         });
     }
-    protected void onPause() {  // save user data when user exits application
+    /** save user data when user exits application **/
+    protected void onPause() {
         super.onPause();
         SharedPreferences.Editor editor = getSharedPreferences(PREFERENCE, MODE_PRIVATE).edit();
         if (yes1.isChecked()) {
@@ -160,7 +165,8 @@ public class Diagnose extends AppCompatActivity {
         editor.apply();
         editor.commit();
     }
-    protected void onResume() {  // restore user data from SharedPreferences
+    /** restore user data from SharedPreferences **/
+    protected void onResume() {
         super.onResume();
         SharedPreferences prefs = getSharedPreferences(PREFERENCE, MODE_PRIVATE);
         String yes1_data = prefs.getString("yes1_data", "null");
@@ -232,7 +238,8 @@ public class Diagnose extends AppCompatActivity {
             no9.setChecked(true);
         }
     }
-    public void tulos(View view) {  // check all the user answers here and call this method from final button
+    /** check all the user answers here and call this method from final button **/
+    public void tulos(View view) {
         points = 0;  // always start point counting from zero
         if (yes1.isChecked()) {
             points++;
@@ -266,8 +273,9 @@ public class Diagnose extends AppCompatActivity {
         if (short1.isChecked() || middle1.isChecked()) {
             points++;
         }
+        /** calculate infection probability and send it to DiagnoseFinal **/
         Intent intent = new Intent(this, DiagnoseFinal.class);
-        intent.putExtra(EXTRA_MESSAGE, Long.toString((Math.round((points / maximumpoints) * 100)))); // calculate infection probability and send it to DiagnoseFinal
+        intent.putExtra(EXTRA_MESSAGE, Long.toString((Math.round((points / maximumpoints) * 100))));
         if ((points / maximumpoints) * 100 < 40) {   // send also a message to user
             intent.putExtra(EXTRA_MESSAGE2, "Alhainen tartunnan todennäköisyys");
         }
