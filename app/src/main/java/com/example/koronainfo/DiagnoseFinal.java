@@ -1,3 +1,4 @@
+// author Jere Rajala
 package com.example.koronainfo;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,11 +15,14 @@ public class DiagnoseFinal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_diagnose_final);
         Intent intent = getIntent();
-        String message = intent.getStringExtra(Diagnose.EXTRA_MESSAGE);
+        String probability = intent.getStringExtra(Diagnose.EXTRA_MESSAGE);  // get the intent extra messages
+        String message = intent.getStringExtra(Diagnose.EXTRA_MESSAGE2);
         TextView tulosteksti = findViewById(R.id.tulosteksti);
-        tulosteksti.setText(message);
+        TextView kommentti = findViewById(R.id.kommentti);
+        tulosteksti.setText(probability + " %");  // display infection probability in percents and message to user
+        kommentti.setText(message);
     }
-    public void returnToMain(View view) {
+    public void returnToMain(View view) {  // return to MainActivity (first screen)
         Intent i = new Intent(this,MainActivity.class);
         startActivity(i);
     }

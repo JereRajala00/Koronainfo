@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--  Author Jere Rajala -->
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -37,13 +38,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/kysymys1">
 
                 <RadioButton
-                    android:id="@+id/yes"
+                    android:id="@+id/yes1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/yes" />
 
                 <RadioButton
-                    android:id="@+id/no"
+                    android:id="@+id/no1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/no" />
@@ -345,7 +346,7 @@
         </RadioGroup>
 
         <Button
-            android:id="@+id/tulos"
+            android:id="@+id/tulosteksti2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"

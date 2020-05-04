@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
     public void exit(View view) {
-        onDestroy();
-        System.exit(0);
+        finishAffinity();  // close the entire application
     }
 }
