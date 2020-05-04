@@ -28,4 +28,8 @@
     <string name="olen">Kyllä olen</string>
     <string name="tulos">Laske tartunnan todennäköisyys</string>
 
+    <string name="etusivu">Palaa etusivulle</string>
+    <string name="tulosteksti">Tartunnan todennäköisyys:</string>
+    <string name="prosentti"> % </string>
+
 </resources>
