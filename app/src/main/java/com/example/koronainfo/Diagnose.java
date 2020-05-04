@@ -16,6 +16,11 @@ import java.util.ArrayList;
 
 import static android.provider.AlarmClock.EXTRA_MESSAGE;
 
+/**
+ * esirjies
+ * @author
+ * @version
+ */
 public class Diagnose extends AppCompatActivity {
 
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";  // declare all the widgets and variables

@@ -20,7 +20,7 @@ import android.widget.TextView;
  * Initializes a spinner using values from setMaakunnat() method. Sets listener for the spinner.
  * The correct data for the provinces are set in the OnItemSelectedListener() -method using getInstance().getMaakunta(position) -method.
  * @author Tiitus Telke
- * @version 30.4.2020
+ * @version 4.5.2020
  * @see MaakuntaModel
  * @see MaakuntaValues
  */

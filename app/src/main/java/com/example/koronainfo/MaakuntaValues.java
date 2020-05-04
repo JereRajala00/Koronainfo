@@ -33,6 +33,7 @@ public class MaakuntaValues{
     }
 
     /**
+     * Käytetään kun halutaan palauttaa tartuntamäärä
      * @return Palauttaa maakunnan tartuntamäärän
      */
     public Integer getMaakuntaInf() {
