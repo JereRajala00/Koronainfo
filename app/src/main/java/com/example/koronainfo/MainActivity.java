@@ -25,4 +25,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, Opas.class);
         startActivity(intent);
     }
+    public void OpenAboutScreen(View view) {
+        Intent intent = new Intent(this, About.class);
+        startActivity(intent);
+    }
+    public void exit(View view) {
+        finishAffinity();  // close the entire application
+    }
 }
