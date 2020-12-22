@@ -24,4 +24,9 @@
         <item>Lapin SHP</item>
         <item>Helsingin ja Uudenmaan SHP</item>
     </string-array>
+    <string-array name="data_URLS">
+        <item>https://sampo.thl.fi/pivot/prod/fi/epirapo/covid19case/fact_epirapo_covid19case.json?column=hcdmunicipality2020-445222</item>
+        <item>https://sampo.thl.fi/pivot/prod/fi/epirapo/covid19case/fact_epirapo_covid19case.json?column=hcdmunicipality2020-445222&amp;filter=measure-445344</item>
+        <item>https://sampo.thl.fi/pivot/prod/fi/epirapo/covid19case/fact_epirapo_covid19case.json?column=hcdmunicipality2020-445222&amp;filter=measure-492118</item>
+    </string-array>
 </resources>

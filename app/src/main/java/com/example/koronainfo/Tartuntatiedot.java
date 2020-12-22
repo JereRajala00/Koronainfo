@@ -18,6 +18,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -30,20 +31,18 @@ import java.util.concurrent.ExecutionException;
  * @version 22.12.2020
  * @see MaakuntaModel
  * @see MaakuntaValues
+ * @see FetchData
  */
 
 public class Tartuntatiedot extends AppCompatActivity implements AsyncResponse{
     private Spinner spinner;
     private Resources res;
     private Integer selectedInf;            //amount of infections in selected province (maakunta)
-    private Double selectedInc;             //incidence in selected province
-    private Integer totalInf;               //amount of infections in whole country
-    private Integer totalDth;               //deaths in whole country
-    private Double totalInc;                //incidence in whole country
+    private float selectedInc;             //incidence in selected province
     private TextView infView;                //this TextView shows the infection and death data in whole country
     private TextView maakuntaTextView;      //this TextView shows the
-    FetchData fd = new FetchData();
-
+    private FetchData fd = new FetchData();
+    private String[] urls;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tartuntatiedot);
@@ -55,22 +54,13 @@ public class Tartuntatiedot extends AppCompatActivity implements AsyncResponse{
          * Sets all the data for the provinces with setMaakunnat() -method
          * Adds to total_info resource variables totalInf(all infections), totalDth(deaths) ja totalInc(incidence) ja sets the resource for the infView TextView.
          */
-        totalInf = 5254;
-        totalDth = 230;
-        totalInc = 95.0;
+
         res = getResources();
-        //setMaakunnat();
-        infView.setText(res.getString(R.string.total_info, totalInf, totalDth, totalInc));
 
-
+        spinner = (Spinner) findViewById(R.id.maakunnat_spinner);
         maakuntaTextView = (TextView) findViewById(R.id.InfectedMaakuntaView);
 
-        // Sets listener for the spinner. TextView is used according to selected province using maakunta_info resource. Values are retrieved using MaakuntaModel and the position variable.
-
-
-
          //Sets listener for logo of the Finnish institute of health and welfare. I used an example code. Thank you Cristian from Stackoverflow https://stackoverflow.com/a/3536535.
-
         ImageView img = (ImageView)findViewById(R.id.ThlLogoView);
         img.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
@@ -81,11 +71,10 @@ public class Tartuntatiedot extends AppCompatActivity implements AsyncResponse{
                 startActivity(intent);
             }
         });
-
+        urls = res.getStringArray(R.array.data_URLS);
         fd.delegate = this;
-        fd.execute();
+        fd.execute(urls);
 
-        //setMaakunnat();
     }
 
     /**
@@ -95,26 +84,12 @@ public class Tartuntatiedot extends AppCompatActivity implements AsyncResponse{
      * @see MaakuntaValues
      */
     @Override
-    public void setMaakunnat(JSONObject result) {
-        try {
-            JSONObject infCounts = result.getJSONObject("dataset").getJSONObject("value");
-            JSONObject county = result.getJSONObject("dataset").getJSONObject("dimension").getJSONObject("hcdmunicipality2020").getJSONObject("category").getJSONObject("label");
-            JSONArray infArray = infCounts.toJSONArray(infCounts.names());
-            JSONArray countyArray = county.toJSONArray(county.names());
-            Log.wtf("test", String.valueOf(infArray.length()));
-            for (int i = 0; i < infArray.length() - 1; i++) {
-                Log.wtf("test",countyArray.getString(i));
-                MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues(countyArray.getString(i),infArray.getInt(i), 36.8));
-            }
-        }
-        catch (JSONException e) {
-            e.printStackTrace();
-        }
-
+    public void setMaakunnat(ArrayList<Float> totalInfo) {
         /*
          * initializes the spinner and ArrayAdapter using maakunnat_array -resource. I used the example from https://developer.android.com/guide/topics/ui/controls/spinner
          */
-        spinner = (Spinner) findViewById(R.id.maakunnat_spinner);
+        //sets view with correct values for whole Finlands infection data
+        infView.setText(res.getString(R.string.total_info, Math.round(totalInfo.get(0)), Math.round(totalInfo.get(2)), totalInfo.get(1)));
         // Creates the spinner
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.maakunnat_array, android.R.layout.simple_spinner_item);
@@ -122,6 +97,7 @@ public class Tartuntatiedot extends AppCompatActivity implements AsyncResponse{
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
+        // Sets listener for the spinner. TextView is used according to selected province using maakunta_info resource. Values are retrieved using MaakuntaModel and the position variable.
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

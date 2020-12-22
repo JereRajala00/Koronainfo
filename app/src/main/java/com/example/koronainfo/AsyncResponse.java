@@ -1,7 +1,7 @@
 package com.example.koronainfo;
 
-import org.json.JSONObject;
+import java.util.ArrayList;
 
 public interface AsyncResponse {
-    void setMaakunnat(JSONObject result);
+    void setMaakunnat(ArrayList<Float> totalInfo);
 }
