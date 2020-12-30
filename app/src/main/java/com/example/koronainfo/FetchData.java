@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * This class fetches data from thl's covid infection data API. Data is fetch using 3 different queries and put into three different arrayList where index 0 = total infections, 1 = total population, 2 = deaths
  * @author Tiitus Telke
  * @Version 22.12.2020
  */
@@ -23,8 +24,8 @@ import java.util.List;
 public class FetchData extends AsyncTask<String, Void, Boolean> {
     private JSONObject allData;
     public AsyncResponse delegate = null;
-    private ArrayList<Float> totalInfo;            //index 0 = total infections, 1 = total populatation, 2 =
-    JSONArray infArray, countyArray, populationArray;
+    private ArrayList<Float> totalInfo;            //totalInfo = has total values index 0 = total infections, 1 = total population, 2 = total deaths
+    JSONArray infArray, countyArray, populationArray;       //infArray = all covid infections for each county, countyArray = names of counties in same order as infections, populationArray = population of each county
 
     protected void onPreExecute() {
         totalInfo = new ArrayList<>();
@@ -56,17 +57,14 @@ public class FetchData extends AsyncTask<String, Void, Boolean> {
                     county = allData.getJSONObject("dataset").getJSONObject("dimension").getJSONObject("hcdmunicipality2020").getJSONObject("category").getJSONObject("label");
                     infArray = valuesArray;
                     countyArray = county.toJSONArray(county.names());
-                    totalInfo.add((float) valuesArray.getInt(21));
+                    totalInfo.add((float) valuesArray.getInt(21));          //total amount of infections is at index 21
                 } else if (i == 1) {
                     populationArray = valuesArray;
                     float totalInc = totalInfo.get(0) / valuesArray.getInt(21) * 100000;
                     totalInfo.add(totalInc);
                 } else if (i == 2) {
-                    Log.d("test2", String.valueOf((float)valuesArray.getInt(0)));
                     totalInfo.add((float)valuesArray.getInt(0));
                 }
-                Log.wtf("test", String.valueOf(infArray.length()));
-
             }
             catch (Exception e) {
                 e.printStackTrace();
@@ -81,7 +79,7 @@ public class FetchData extends AsyncTask<String, Void, Boolean> {
         for (int i = 0; i < infArray.length() - 1; i++) {
             try {
                 float incidence = ((float)infArray.getInt(i) / populationArray.getInt(i)) * 100000;
-                MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues(countyArray.getString(i),infArray.getInt(i), incidence));
+                MaakuntaModel.getInstance().getMaakunta().add(new MaakuntaValues(countyArray.getString(i),infArray.getInt(i), incidence));              //adds data for each county to a singleton
             } catch (JSONException e) {
                 e.printStackTrace();
             }

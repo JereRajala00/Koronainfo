@@ -19,6 +19,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -26,7 +27,7 @@ import java.util.concurrent.ExecutionException;
  *
  * Class sets values for infection data and sets it using MaakuntaModel singleton which can be used to create a new ArrayList of MaakuntaValues.
  * Initializes a spinner using values from setMaakunnat() method. Sets listener for the spinner.
- * The correct data for the provinces are set in the OnItemSelectedListener() -method using getInstance().getMaakunta(position) -method.
+ * The correct data for the counties are set in the OnItemSelectedListener() -method using getInstance().getMaakunta(position) -method.
  * @author Tiitus Telke
  * @version 22.12.2020
  * @see MaakuntaModel
@@ -39,16 +40,16 @@ public class Tartuntatiedot extends AppCompatActivity implements AsyncResponse{
     private Resources res;
     private Integer selectedInf;            //amount of infections in selected province (maakunta)
     private float selectedInc;             //incidence in selected province
-    private TextView infView;                //this TextView shows the infection and death data in whole country
-    private TextView maakuntaTextView;      //this TextView shows the
+    private TextView infView, headerView;                //this TextView shows the infection and death data in whole country
+    private TextView maakuntaTextView;      //this TextView shows the data for selected county
     private FetchData fd = new FetchData();
-    private String[] urls;
+    private String[] urls;          //urls has 3 queries for fetching covid data from thl.fi open API: 0: infections of each county, population of each county, total deaths
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tartuntatiedot);
 
         infView = (TextView) findViewById(R.id.InfectedCountView);
-
+        headerView = (TextView) findViewById(R.id.Header);
 
         /* Gets resources to res variable
          * Sets all the data for the provinces with setMaakunnat() -method
@@ -56,6 +57,10 @@ public class Tartuntatiedot extends AppCompatActivity implements AsyncResponse{
          */
 
         res = getResources();
+
+        String dateTimeString = java.text.DateFormat.getDateTimeInstance().format(new Date());
+
+        headerView.setText(res.getString(R.string.tartuntatiedot_header,dateTimeString));
 
         spinner = (Spinner) findViewById(R.id.maakunnat_spinner);
         maakuntaTextView = (TextView) findViewById(R.id.InfectedMaakuntaView);
@@ -74,9 +79,7 @@ public class Tartuntatiedot extends AppCompatActivity implements AsyncResponse{
         urls = res.getStringArray(R.array.data_URLS);
         fd.delegate = this;
         fd.execute(urls);
-
     }
-
     /**
      * Creates a new ArrayList of MaakuntaValues using MaakuntaModel and sets total infected and deaths also.
      * @setMaakunnat Creates a new ArrayList of MaakuntaValues using MaakuntaModel and sets total infected and deaths also.
