@@ -3,23 +3,30 @@
     <!-- Author Tiitus Telke -->
     <string-array name="maakunnat_array">
         <item>Ahvenanmaa</item>
-        <item>Etelä-Karjala</item>
-        <item>Etelä-Pohjanmaa</item>
-        <item>Etelä-Savo</item>
-        <item>Kainuu</item>
-        <item>Kanta-Häme</item>
-        <item>Keski-Pohjanmaa</item>
-        <item>Keski-Suomi</item>
-        <item>Kymenlaakso</item>
-        <item>Lappi</item>
-        <item>Pirkanmaa</item>
-        <item>Pohjanmaa</item>
-        <item>Pohjois-Karjala</item>
-        <item>Pohjois-Pohjanmaa</item>
-        <item>Pohjois-Savo</item>
-        <item>Päijät-Häme</item>
-        <item>Satakunta</item>
-        <item>Uusimaa</item>
-        <item>Varsinais-Suomi</item>
+        <item>Varsinais-Suomen SHP</item>
+        <item>Satakunnan SHP</item>
+        <item>Kanta-Hämeen SHP</item>
+        <item>Pirkanmaan SHP</item>
+        <item>Päijät-Hämeen SHP</item>
+        <item>Kymenlaakson SHP</item>
+        <item>Etelä-Karjalan SHP</item>
+        <item>Etelä-Savon SHP</item>
+        <item>Itä-Savon SHP</item>
+        <item>Pohjois-Karjalan SHP</item>
+        <item>Pohjois-Savon SHP</item>
+        <item>Keski-Suomen SHP</item>
+        <item>Etelä-Pohjanmaan SHP</item>
+        <item>Vaasan SHP</item>
+        <item>Keski-Pohjanmaan SHP</item>
+        <item>Pohjois-Pohjanmaan SHP</item>
+        <item>Kainuun SHP</item>
+        <item>Länsi-Pohjan SHP</item>
+        <item>Lapin SHP</item>
+        <item>Helsingin ja Uudenmaan SHP</item>
+    </string-array>
+    <string-array name="data_URLS">
+        <item>https://sampo.thl.fi/pivot/prod/fi/epirapo/covid19case/fact_epirapo_covid19case.json?column=hcdmunicipality2020-445222</item>
+        <item>https://sampo.thl.fi/pivot/prod/fi/epirapo/covid19case/fact_epirapo_covid19case.json?column=hcdmunicipality2020-445222&amp;filter=measure-445344</item>
+        <item>https://sampo.thl.fi/pivot/prod/fi/epirapo/covid19case/fact_epirapo_covid19case.json?column=hcdmunicipality2020-445222&amp;filter=measure-492118</item>
     </string-array>
 </resources>

@@ -5,20 +5,20 @@ import androidx.annotation.NonNull;
 /**
  * Luokka kuvaa Tartuntatiedot-luokassa tarvittavia eri maakuntien virustartuntaan liittyviä arvoja
  * @author Tiitus Telke
- * @version 29.4.2020
+ * @version 22.12.2020
  * @see MaakuntaModel
  */
 public class MaakuntaValues{
     private String maakunta;
     private int infected;
-    private double incidence;
+    private float incidence;
 
     /**
      * @param newMaakunta Lisää uuden maakunnan nimen
      * @param newInfected Lisää uuden tartuntojen määrän
      * @param newIncidence Lisää uuden esintyneisyysmäärän
      */
-    public MaakuntaValues(String newMaakunta, int newInfected, double newIncidence) {
+    public MaakuntaValues(String newMaakunta, int newInfected, float newIncidence) {
         this.maakunta = newMaakunta;
         this.infected = newInfected;
         this.incidence = newIncidence;
@@ -36,7 +36,7 @@ public class MaakuntaValues{
      * Käytetään kun halutaan palauttaa tartuntamäärä
      * @return Palauttaa maakunnan tartuntamäärän
      */
-    public Integer getMaakuntaInf() {
+    public int getMaakuntaInf() {
         return this.infected;
     }
 
@@ -52,7 +52,7 @@ public class MaakuntaValues{
      * Käytetään kun halutaan palauttaa esiintyneisyys
      * @return Palauttaa esiintyneisyyden
      */
-    public Double getMaakuntaInc() {
+    public float getMaakuntaInc() {
         return this.incidence;
     }
 

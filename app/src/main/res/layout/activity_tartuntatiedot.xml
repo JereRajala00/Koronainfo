@@ -20,7 +20,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="80dp"
 
-            android:text="@string/tartunatiedot_header"
+            android:text="@string/tartuntatiedot_header"
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Body1"
             android:textColor="@color/colorPrimary"
